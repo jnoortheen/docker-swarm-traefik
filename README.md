@@ -31,7 +31,10 @@ cp .env.template .env
 to run the traefik
 
 ```sh
-docker stack deploy -c docker-compose.yml traefik
+# for some reason the .env is not picked up when running through stack
+docker-compose config > docker-compose.with-env.yml
+# deploy traefik as a service
+docker stack deploy -c docker-compose.with-env.yml traefik
 ```
 
 then you will be able to access the web UI of traefik at `traefik.$HOST_NAME`
