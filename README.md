@@ -34,6 +34,9 @@ to run the traefik
 # .env is not supported while deploying with `docker stack`
 # https://github.com/moby/moby/issues/29133
 docker-compose config | docker stack deploy -c - traefik
+
+# or
+docker stack deploy -c <(docker-compose config) traefik
 ```
 
 then you will be able to access the web UI of traefik at `traefik.$HOST_NAME`
