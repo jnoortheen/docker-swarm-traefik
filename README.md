@@ -52,7 +52,7 @@ services:
     deploy:
       labels:
         traefik.enable: "true"
-        traefik.frontend.rule: 'Host: who.dvlab.in'
+        traefik.frontend.rule: 'Host: who.$HOST_NAME'
         traefik.port: 80
         traefik.docker.network: 'proxy'
 
