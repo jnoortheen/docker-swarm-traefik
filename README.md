@@ -62,6 +62,8 @@ networks:
 
 ```
 
+Note: There is no need to expose ports othese services. only need to label them in `traefik.port`
+
 ## ToDos
 
 - create basic auth for traefic web ui
