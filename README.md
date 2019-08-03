@@ -49,7 +49,7 @@ docker service logs traefik_traefik -f
 
 ## How to configure a web service to use traefik
 
-- From the gitlab runner , copy the compose file to the above said server directory (`/var/www/server/apps`) and deploy using `docker stack` as usual. The service should look like
+- The service definition should look like
 
 ```yml
 
@@ -70,7 +70,12 @@ services:
 networks:
   proxy:
     external: true
+```
 
+- Deploy it in the same way as traefik's docker compose file
+
+```sh
+docker stack deploy -c <(docker-compose config) traefik
 ```
 
 Notes:
@@ -79,7 +84,3 @@ Notes:
 - Define the Host as you want
 - If the service is already configured for SSL then `traefik.port` should be `443` depending on the server used
 - Define the same network as traefik
-
-## ToDos
-
-- run gitlab part of the docker swarm
