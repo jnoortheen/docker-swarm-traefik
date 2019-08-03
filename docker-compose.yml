@@ -12,7 +12,7 @@ services:
       - --docker
       - --docker.endpoint=unix:///var/run/docker.sock
       - --docker.swarmmode
-      - --docker.domain=$HOST_NAME
+      - --docker.domain=${HOST_NAME}
       - --docker.watch=true
       - --docker.exposedbydefault=false
 #      - --acme.email=$WEB_MASTER_EMAIL
@@ -37,14 +37,14 @@ services:
     env_file: .env
     deploy:
       labels:
-        - "traefik.frontend.rule=Host:traefik.dvlab.in"
+        - "traefik.frontend.rule=Host:traefik.${HOST_NAME}"
         - "traefik.enable=true"
         - "traefik.port=8080"
         - "traefik.docker.network=proxy"
         - "traefik.redirectorservice.frontend.entryPoints=http"
         - "traefik.redirectorservice.frontend.redirect.entryPoint=https"
         - "traefik.webservice.frontend.entryPoints=https"
-        - "traefik.frontend.auth.basic.users=$USERNAME:$HASHED_PASSWORD"
+        - "traefik.frontend.auth.basic.users=${TRAEFIK_USER}:${HASHED_PASSWORD}"
 
 networks:
   proxy:
