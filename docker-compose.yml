@@ -3,7 +3,7 @@ services:
   traefik:
     image: traefik:v1.7
     command:
-      - --debug=true
+      - --debug=false
       - --logLevel=INFO
       - --defaultentrypoints=https,http
       - --entryPoints=Name:http Address::80 Redirect.EntryPoint:https
