@@ -1,3 +1,2 @@
 .env
 apps/*.yml
-docker-compose.with-env.yml
