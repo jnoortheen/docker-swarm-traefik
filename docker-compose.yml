@@ -34,7 +34,8 @@ services:
       - acme:/acme/
     networks:
       - proxy
-    env_file: .env
+    env_file:
+      - .env
     deploy:
       labels:
         - "traefik.frontend.rule=Host:traefik.${HOST_NAME}"
